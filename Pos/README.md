@@ -1,4 +1,4 @@
 # <b><a href="https://toremetal.github.io">™T©ReMeTaL</a></b> - Pos
 ![lil-Reaper_Animated](https://github.com/Toremetal/Pos/blob/08d5edd4c829ea5192ce8706b507e3a211f1947a/lil-Reaper_Animated.gif)
 ### <a href="https://play.google.com/store/apps/dev?id=7952290850776080706">Small Business Management application for Android™</a>
-![pos_logo.png]
+![pos_logo.png](https://github.com/Toremetal/Android-Source/blob/42ca1a6881a59ac37a30c09966c5801932c6e6bb/Pos/pos_logo.png)
