@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~    Copyright (C) 2022 ™T©ReMeTaL.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    Some functionality created with modified (code) lessons provided by:
+  ~    The Android Open Source Project.
+  ~    Copyright (C) 2022 The Android Open Source Project.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~
+  ~   ************************************************************************
+  ~     message_popup.xml : Copyright (c) 2022 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David W. Rick
+  ~      Date: 8/23/22, 6:04 AM
+  ~      Program Name: PurchaseTracker.main
+  ~      File: message_popup.xml
+  ~      Last Modified: 8/23/22, 1:53 AM
+  ~   ************************************************************************
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foregroundGravity="center"
+    android:gravity="center"
+    android:id="@+id/myMessagePopupIab">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarIab"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="?attr/colorPrimary"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:padding="8dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewIab"
+                style="@style/Widget.PurchaseTracker.TextView"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/transparent"
+                android:text="@string/data_consent_n_iab_standard"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/fab_background"
+                android:theme="@style/MaterialAlertDialog.Material3.Title.Panel.CenterStacked"
+                app:layout_constraintBottom_toTopOf="@+id/toolbar1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2Iab"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                android:autoLink="web"
+                android:gravity="center"
+                android:text="@string/data_transparency_statement"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+</androidx.constraintlayout.widget.ConstraintLayout><!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:background="@color/transparent"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/rated_g"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:hapticFeedbackEnabled="true"
+                    android:visibility="gone"
+                    android:padding="6dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rated_pg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/rated_g" />
+
+                <ImageButton
+                    android:id="@+id/rated_pg"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:visibility="gone"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:padding="6dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rated_t"
+                    app:layout_constraintStart_toEndOf="@+id/rated_g"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/rated_pg" />
+
+                <ImageButton
+                    android:id="@+id/rated_t"
+                    android:layout_width="70dp"
+                    android:layout_height="78dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:padding="6dp"
+                    android:scaleType="fitXY"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rated_ma"
+                    app:layout_constraintStart_toEndOf="@+id/rated_pg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/rated_t" />
+
+                <ImageButton
+                    android:id="@+id/rated_ma"
+                    android:layout_width="70dp"
+                    android:layout_height="78dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:padding="6dp"
+                    android:scaleType="fitXY"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/rated_m" />
+            </LinearLayout>-->

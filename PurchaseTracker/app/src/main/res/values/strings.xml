@@ -1,0 +1,85 @@
+<!--
+  ~    Copyright (C) 2022 ™T©ReMeTaL.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    Some functionality created with modified (code) lessons provided by:
+  ~    The Android Open Source Project.
+  ~    Copyright (C) 2022 The Android Open Source Project.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~
+  ~   ************************************************************************
+  ~     strings.xml : Copyright (c) 2022 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David W. Rick
+  ~      Date: 8/23/22, 6:04 AM
+  ~      Program Name: PurchaseTracker.main
+  ~      File: strings.xml
+  ~      Last Modified: 8/23/22, 1:53 AM
+  ~   ************************************************************************
+  -->
+<!--™T©ReMeTaL-->
+<resources>
+    <string name="admob_ad_id"></string>
+    <string name="admob_app_id"></string>
+    <string name="facebook_app_id"></string>
+    <string name="facebook_app_secret"></string>
+    <string name="facebook_ad_id"></string>
+    <string name="facebook_ad_client_token"></string>
+    <string name="facebook_client_token"></string>
+    <string name="app_name">🛒💸Tracker</string>
+    <string name="app_copyright">©%s™T©ReMeTaL</string>
+    <string name="app_creator">™T©ReMeTaL</string>
+    <string name="version_display_name">Version: %s</string>
+    <string name="how_was_the_service">How was the service?</string>
+    <string name="amazing_service">Amazing (20%)</string>
+    <string name="good_service">Good (18%)</string>
+    <string name="ok_service">Okay (15%)</string>
+    <string name="round_up_tip">Round up tip?</string>
+    <string name="calculate">Calculate</string>
+    <string name="tip_amount">Tip Amount: %s</string>
+    <string name="total">Total: %s</string>
+    <string name="taxRate">Tax %</string>
+    <string name="price">Price</string>
+    <string name="tax">Tax: %s</string>
+    <string name="subtotal">SubTotal: %s</string>
+    <string name="addToSale">Add to Sale</string>
+    <string name="resetToZero">Reset to Zero</string>
+    <string name="saveTaxRate">Save Tax Rate</string>
+    <string name="qty">Qty</string>
+    <string name="main_message">Overall Spending\nGrand Total!</string>
+    <string name="taxRateSaved">Tax Rate Saved!</string>
+    <string name="str_skip">Skip</string>
+    <string name="data_consent">Data Consent🔧🔐</string>
+    <string name="dark_mode">Dark-Mode🔧💡</string>
+    <string name="data_transparency_statement">IAB Tech Lab has worked closely with data providers to develop an industry-first standard aimed at bringing transparency to the data marketplace. \nhttps://iabtechlab.com/standards/data-transparency\nPlease Select an Option Below?</string>
+    <string name="data_consent_n_iab_standard">Data Consent\n IAB Standard</string>
+    <string name="rating_g">Rating-G</string>
+    <string name="rating_ma">Rating-MA</string>
+    <string name="rating_t">Rating-T</string>
+    <string name="rating_pg">Rating-PG</string>
+    <string name="select_age_appropriate_nad_content_rating">Select age appropriate\nAd Content-Rating</string>
+    <string name="ad">ad</string>
+    <string name="view_total">View G.Total📈💸</string>
+    <string name="save_total">Save G.Total💾💵</string>
+    <string name="reset_total">Reset G.Total🔄💰</string>
+    <string name="dev_page">https://play.google.com/store/apps/dev?id=7952290850776080706</string>
+    <string name="website">toremetal.com</string>
+    <string name="privacy_policy">https://toremetal.com/privacypolicy</string>
+    <string name="privacy">Privacy Policy🅿🛡</string>
+    <string name="app_store">App-Store 🏪</string>
+    <string name="feedback">feedback ❔❔❔</string>
+    <string name="feedback_link">https://docs.google.com/forms/d/e/1FAIpQLSeO1pYOdb0d00x3mgvN0BnyR4zr0aHBiT5T2yqmGPxFd1e2iQ/viewform?</string>
+</resources>

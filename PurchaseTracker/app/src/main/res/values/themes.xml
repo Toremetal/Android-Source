@@ -1,0 +1,79 @@
+<!--
+  ~    Copyright (C) 2022 ™T©ReMeTaL.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    Some functionality created with modified (code) lessons provided by:
+  ~    The Android Open Source Project.
+  ~    Copyright (C) 2022 The Android Open Source Project.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~
+  ~   ************************************************************************
+  ~     themes.xml : Copyright (c) 2022 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David W. Rick
+  ~      Date: 8/23/22, 6:04 AM
+  ~      Program Name: PurchaseTracker.main
+  ~      File: themes.xml
+  ~      Last Modified: 8/23/22, 1:53 AM
+  ~   ************************************************************************
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PurchaseTracker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <!-- Text input fields -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
+        <!-- Radio buttons -->
+        <item name="radioButtonStyle">@style/Widget.PurchaseTracker.CompoundButton.RadioButton
+        </item>
+        <!-- Switches -->
+        <item name="switchStyle">@style/Widget.PurchaseTracker.CompoundButton.Switch</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:windowBackground">@drawable/sc_background</item>
+
+        <!-- <item name="android:actionBarItemBackground">@drawable/ic_logo</item>
+       -->
+
+        <item name="snackbarStyle">@style/Widget.PurchaseTracker.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Widget.PurchaseTracker.SnackbarButton</item>
+        <!--<item name="alertDialogCenterButtons">@style/Widget.PurchaseTracker.ButtonBar.AlertDialog</item>
+        <item name="alertDialogTheme">@style/Widget.PurchaseTracker.ButtonBar.AlertDialog</item>
+        <item name="alertDialogButtonGroupStyle">@style/Widget.PurchaseTracker.ButtonBar.AlertDialog</item>-->
+        <item name="android:fontFamily">@font/im_fell_english_sc</item>
+    </style>
+
+    <style name="Theme.PurchaseTracker.Fullscreen" parent="Theme.PurchaseTracker">
+        <item name="android:actionBarStyle">
+            @style/Widget.Theme.PurchaseTracker.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+</resources>
+
+    <!--@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen-->

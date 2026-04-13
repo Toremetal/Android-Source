@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~    Copyright (C) 2022 ™T©ReMeTaL.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    Some functionality created with modified (code) lessons provided by:
+  ~    The Android Open Source Project.
+  ~    Copyright (C) 2022 The Android Open Source Project.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~
+  ~   ************************************************************************
+  ~     main.xml : Copyright (c) 2022 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David W. Rick
+  ~      Date: 8/23/22, 6:04 AM
+  ~      Program Name: PurchaseTracker.main
+  ~      File: main.xml
+  ~      Last Modified: 8/23/22, 1:53 AM
+  ~   ************************************************************************
+  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_info"
+        android:contentDescription="@string/app_name"
+        android:icon="@drawable/ic_logo"
+        android:title="@string/app_name"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_view_total"
+        android:contentDescription="@string/data_consent"
+        android:icon="@drawable/ic_end_sale"
+        android:title="@string/view_total"
+        android:visible="false"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_save_total"
+        android:contentDescription="@string/data_consent"
+        android:icon="@drawable/ic_save"
+        android:title="@string/save_total"
+        android:visible="false"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_reset_total"
+        android:contentDescription="@string/data_consent"
+        android:icon="@drawable/ic_clear"
+        android:title="@string/reset_total"
+        android:visible="false"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/app_bar_switch"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="@string/dark_mode"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_settings"
+        android:contentDescription="@string/data_consent"
+        android:icon="@drawable/ic_ad_targeting_24"
+        android:title="@string/data_consent"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_privacy_policy"
+        android:contentDescription="@string/data_consent"
+        android:icon="@drawable/ic_privacy_24"
+        android:title="@string/privacy"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_app_store"
+        android:contentDescription="@string/data_consent"
+        android:icon="@drawable/ic_privacy_24"
+        android:title="@string/app_store"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_feedback"
+        android:contentDescription="@string/data_consent"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="@string/feedback"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_website"
+        android:contentDescription="@string/app_creator"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="@string/app_creator"
+        app:showAsAction="collapseActionView" />
+</menu>

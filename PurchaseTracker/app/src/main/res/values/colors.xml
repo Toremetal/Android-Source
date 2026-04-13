@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~    Copyright (C) 2022 ™T©ReMeTaL.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    Some functionality created with modified (code) lessons provided by:
+  ~    The Android Open Source Project.
+  ~    Copyright (C) 2022 The Android Open Source Project.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~
+  ~   ************************************************************************
+  ~     colors.xml : Copyright (c) 2022 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David W. Rick
+  ~      Date: 8/23/22, 6:04 AM
+  ~      Program Name: PurchaseTracker.main
+  ~      File: colors.xml
+  ~      Last Modified: 8/23/22, 1:53 AM
+  ~   ************************************************************************
+  -->
+
+<resources>
+    <color name="colorPrimary">#490A0A</color>
+    <color name="colorPrimaryVariant">#424242</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#424242</color>
+    <color name="colorSecondaryVariant">#930000</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="fab_background">#30FB39</color>
+    <color name="fabSaveBackground">#DF4AA5FF</color>
+    <color name="blue">#0025AC</color>
+    <color name="red_dark">#930000</color>
+    <color name="text_background">#BEFFFFFF</color>
+    <color name="background">#00FFFFFF</color>
+    <color name="grey2">#490A0A</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black_overlay">#66000000</color>
+</resources>

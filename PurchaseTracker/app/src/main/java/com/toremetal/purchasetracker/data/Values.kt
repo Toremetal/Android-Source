@@ -1,0 +1,45 @@
+/*
+ *    Copyright (C) 2022 ™T©ReMeTaL.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *
+ *    Some functionality created with modified (code) lessons provided by:
+ *    The Android Open Source Project.
+ *    Copyright (C) 2022 The Android Open Source Project.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ *   ************************************************************************
+ *     Values.kt : Copyright (c) 2022 ™T©ReMeTaL.
+ *   ************************************************************************
+ *      Computer Scientist: David W. Rick
+ *      Date: 8/23/22, 6:04 AM
+ *      Program Name: PurchaseTracker.main
+ *      File: Values.kt
+ *      Last Modified: 8/23/22, 1:53 AM
+ *   ************************************************************************
+ */
+
+package com.toremetal.purchasetracker.data
+
+/**
+ * Variable [checkUpdate] is used to prevent the app from repeatedly checking for updates
+ * on execution of the onCreate method.
+ */
+var checkUpdate: Boolean = true
+
+/**
+ * Variable [grandTotal] stores the total value to save in the settings.
+ */
+var grandTotal: Float = 0F
