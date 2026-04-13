@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~    ™T©ReMeTaL Signs A-Z.
+  ~    Copyright (C) 2025 ™T©ReMeTaL.
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    You may obtain a copy of the License at
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~   ************************************************************************
+  ~     mobile_navigation.xml : Copyright (c) 2025 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David Rick (™T©ReMeTaL)
+  ~      Date: 10/11/25, 4:10 AM
+  ~      Program Name: signs.main
+  ~      File: mobile_navigation.xml
+  ~      Last Modified: 8/7/24, 11:51 PM
+  ~   ************************************************************************
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home"
+    tools:ignore="UnusedIds">
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.toremetal.signs.ui.home.HomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_words"
+        android:name="com.toremetal.signs.ui.words.WordsFragment"
+        android:label="@string/words"
+        tools:layout="@layout/fragment_signs" />
+    <fragment
+        android:id="@+id/nav_online"
+        android:name="com.toremetal.signs.ui.signs.SignsFragment"
+        android:label="@string/online"
+        tools:layout="@layout/fragment_signs" />
+    <fragment
+        android:id="@+id/nav_policy"
+        android:name="com.toremetal.signs.ui.policy.PolicyFragment"
+        android:label="@string/privacy_policy"
+        tools:layout="@layout/fragment_policy" />
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.toremetal.signs.ui.feedback.FeedbackFragment"
+        android:label="@string/feedback"
+        tools:layout="@layout/feedback_fragment" />
+    <fragment
+        android:id="@+id/nav_numbers"
+        android:name="com.toremetal.signs.ui.numbers.NumbersFragment"
+        android:label="@string/menu_numbers"
+        tools:layout="@layout/fragment_numbers" />
+    <fragment
+        android:id="@+id/nav_web"
+        android:name="com.toremetal.signs.ui.website.WebFragment"
+        android:label="@string/trademark"
+        tools:layout="@layout/fragment_web" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.toremetal.signs.ui.settings.SettingsFragment"
+        android:label="@string/sign_in_settings"
+        tools:layout="@xml/root_preferences" />
+    <fragment
+        android:id="@+id/nav_slider"
+        android:name="com.toremetal.signs.ui.slider.SliderFragment"
+        android:label="@string/translator"
+        tools:layout="@layout/fragment_slider" />
+
+    <!--<fragment
+        android:id="@+id/nav_submit"
+        android:name="com.toremetal.signs.ui.image.ImageFragment"
+        android:label="@string/save_custom_image"
+        tools:layout="@layout/fragment_image" />
+    <fragment
+        android:id="@+id/nav_custom"
+        android:name="com.toremetal.signs.ui.custom.CustomFragment"
+        android:label="@string/custom_image_library"
+        tools:layout="@layout/fragment_custom" />
+    <fragment
+        android:id="@+id/nav_public"
+        android:name="com.toremetal.signs.ui.imagepublic.ImagePublicFragment"
+        android:label="@string/public_image_library"
+        tools:layout="@layout/fragment_image_public" />
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.toremetal.signs.ui.gallery.GalleryFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_gallery" />-->
+
+</navigation>

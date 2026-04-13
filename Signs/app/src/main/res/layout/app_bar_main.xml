@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~    ™T©ReMeTaL Signs A-Z.
+  ~    Copyright (C) 2025 ™T©ReMeTaL.
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    You may obtain a copy of the License at
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~   ************************************************************************
+  ~     app_bar_main.xml : Copyright (c) 2025 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David Rick (™T©ReMeTaL)
+  ~      Date: 10/11/25, 4:10 AM
+  ~      Program Name: signs.main
+  ~      File: app_bar_main.xml
+  ~      Last Modified: 8/7/24, 11:51 PM
+  ~   ************************************************************************
+  -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="UnusedIds">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.signs.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.signs.PopupOverlay">
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/translatorSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_marginEnd="16dp"
+                android:drawableEnd="@drawable/ic_search"
+                android:shadowColor="#DD2C00"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textOff="@string/translator"
+                android:textOn="@string/buttonText" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSpc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginStart="-192dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="@string/add_a_space"
+        android:cropToPadding="true"
+        app:backgroundTint="#DA109800"
+        app:ensureMinTouchTargetSize="false"
+        app:fabCustomSize="48dp"
+        app:fabSize="normal"
+        app:maxImageSize="24dp"
+        app:srcCompat="@android:drawable/divider_horizontal_textfield" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabClrAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginStart="-64dp"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="#E6D32F2F"
+        android:contentDescription="@string/clear_all"
+        android:cropToPadding="true"
+        app:ensureMinTouchTargetSize="false"
+        app:fabCustomSize="48dp"
+        app:fabSize="normal"
+        app:maxImageSize="24dp"
+        app:srcCompat="@android:drawable/ic_popup_sync" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabClr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="44dp"
+        android:layout_marginStart="64dp"
+        android:backgroundTint="#E6D32F2F"
+        android:contentDescription="@string/delete_last_letter"
+        android:cropToPadding="true"
+        app:ensureMinTouchTargetSize="false"
+        app:fabCustomSize="48dp"
+        app:fabSize="normal"
+        app:maxImageSize="24dp"
+        app:srcCompat="@android:drawable/ic_input_delete" />
+
+    <!--app:srcCompat="@android:drawable/ic_menu_search" -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#4D2962FF"
+        android:contentDescription="@string/float_button_hand_description"
+        app:hoveredFocusedTranslationZ="4dp"
+        app:maxImageSize="36dp"
+        app:srcCompat="@drawable/ic_hand_point" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#51FF3B3B"
+        android:contentDescription="@string/searchButtonContentDescription"
+        android:tint="#AA00FF"
+        android:visibility="gone"
+        app:maxImageSize="40dp"
+        app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <!--<LinearLayout
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/cardview_dark_background"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:shadowColor="#D8000000"
+        android:shadowDx="2"
+        android:shadowDy="3"
+        android:shadowRadius="4"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight=".7"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/are_you_over_age"
+            android:shadowColor="#E2A567FF"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:textColor="#E2FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtOne"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight=".2"
+            android:gravity="center"
+            android:shadowColor="#E2A567FF"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="@string/yes"
+            android:textColor="@color/teal_200"
+            app:drawableTopCompat="@android:drawable/checkbox_on_background" />
+
+        <TextView
+            android:id="@+id/txtTwo"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_weight=".2"
+            android:gravity="center"
+            android:shadowColor="#D862A3FF"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="@string/no"
+            android:textColor="#D50000"
+            app:drawableTopCompat="@android:drawable/checkbox_off_background" />
+    </LinearLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

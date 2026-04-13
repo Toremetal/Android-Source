@@ -1,0 +1,50 @@
+<!--
+  ~    ™T©ReMeTaL Signs A-Z.
+  ~    Copyright (C) 2025 ™T©ReMeTaL.
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    You may obtain a copy of the License at
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~   ************************************************************************
+  ~     themes.xml : Copyright (c) 2025 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David Rick (™T©ReMeTaL)
+  ~      Date: 10/11/25, 4:10 AM
+  ~      Program Name: signs.main
+  ~      File: themes.xml
+  ~      Last Modified: 8/7/24, 11:51 PM
+  ~   ************************************************************************
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.signs" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorOnPrimary">@color/textOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondaryVariant</item>
+        <item name="colorOnSecondary">@color/textOnSecondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/im_fell_english_sc</item>
+    </style>
+    <style name="Theme.signs.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.signs.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.signs.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

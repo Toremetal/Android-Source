@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~    ™T©ReMeTaL Signs A-Z.
+  ~    Copyright (C) 2025 ™T©ReMeTaL.
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~
+  ~    You may obtain a copy of the License at
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  ~   ************************************************************************
+  ~     colors.xml : Copyright (c) 2025 ™T©ReMeTaL.
+  ~   ************************************************************************
+  ~      Computer Scientist: David Rick (™T©ReMeTaL)
+  ~      Date: 10/11/25, 4:10 AM
+  ~      Program Name: signs.main
+  ~      File: colors.xml
+  ~      Last Modified: 8/7/24, 11:51 PM
+  ~   ************************************************************************
+  -->
+
+<resources>
+    <color name="privacy">#FF6F00</color>
+    <color name="hintColor">#BF360C</color>
+    <color name="primary">#0D47A1</color>
+    <color name="primaryVariant">#62a3ff</color>
+    <color name="secondary">#294DFF</color>
+    <color name="secondaryVariant">#1231FF</color>
+    <color name="textOnSecondary">#ffffff</color>
+    <color name="SnackBarBackground">#C9700202</color>
+    <color name="SnackBarText">#DADDE2</color>
+    <color name="SnackBarActionText">#00E2FA</color>
+    <color name="SubmitButtonShadow">#FFFB03</color>
+    <color name="SubmitTextShadow">#A6D600</color>
+</resources>
