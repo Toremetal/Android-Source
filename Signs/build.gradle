@@ -1,0 +1,93 @@
+/*
+ *    ™T©ReMeTaL Signs A-Z.
+ *    Copyright (C) 2025 ™T©ReMeTaL.
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *
+ *    You may obtain a copy of the License at
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *   ************************************************************************
+ *     build.gradle : Copyright (c) 2025 ™T©ReMeTaL.
+ *   ************************************************************************
+ *      Computer Scientist: David Rick (™T©ReMeTaL)
+ *      Date: 10/11/25, 4:10 AM
+ *      Program Name: signs
+ *      File: build.gradle
+ *      Last Modified: 9/13/25, 5:22 PM
+ *   ************************************************************************
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    //ext {
+    // Versions for all the dependencies we plan to use. It's particularly useful for kotlin
+    // where the versions of the plugin needs to be the same as the version of the
+    // library defined in the app Gradle file
+    //kotlin_version = "1.5.31"
+    //nav_version = "2.3.5"
+    //}
+    /*repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+        maven { url 'https://maven.google.com' }
+        // Add Appodeal repository
+        //maven { url "https://artifactory.appodeal.com/appodeal" }
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }*/
+        //classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10'
+        //classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20'
+        //classpath 'com.google.gms:google-services:4.3.13'
+        //classpath 'com.android.tools.build:gradle:4.2.2'
+        //classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+   // }
+}
+plugins {
+    id("com.android.application") version "8.5.2" apply false
+    id("com.android.library") version "8.5.2" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.23" apply false
+   // id 'com.google.gms.google-services' version '4.3.15' apply false
+}
+allprojects {
+    /*repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+        // Add Appodeal repository
+        //maven { url "https://artifactory.appodeal.com/appodeal" }
+    }*/
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile).tap {
+            configureEach {
+                options.compilerArgs << "-Xlint:deprecation"
+            }
+        }
+    }
+}
