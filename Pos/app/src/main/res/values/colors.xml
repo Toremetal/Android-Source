@@ -38,4 +38,9 @@
     <color name="grey">#656565</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red_700">#FFD32F2F</color>
+    <color name="primeNight">#FF5722</color>
+    <color name="primeVarNight">#4BF11F</color>
+    <color name="onPrimeNight">#4BF11F</color>
+    <color name="onSecNight">#4BF11F</color>
+    <color name="secNight">#4BF11F</color>
 </resources>

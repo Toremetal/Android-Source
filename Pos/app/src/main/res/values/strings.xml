@@ -57,19 +57,17 @@
     <string name="saleList">%s</string>
     <string name="item_search">Item Search</string>
     <string name="zero">0</string>
-    <string name="nav_header_title">™T©ReMeTaL PO$</string>
-    <string name="nav_header_subtitle">www.toremetal.com</string>
+    <string name="copyright" translatable="false">© %s ™T©ReMeTaL</string>
+    <string name="nav_header_title" translatable="false">™T©ReMeTaL PO$</string>
+    <string name="nav_header_subtitle" translatable="false">toremetal.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="version_display_name">Version: %s</string>
+    <string name="settings">Settings</string>
+    <string name="version_display_name" translatable="false">Version: %s</string>
     <string name="menu_home">Checkout</string>
-    <string name="menu_slideshow">Settings</string>
     <string name="inventory">Inventory</string>
-    <string name="app_name">™T©ReMeTaL PO$</string>
+    <string name="app_name" translatable="false">™T©ReMeTaL PO$</string>
     <string name="receipt">Receipt</string>
     <string name="item_Name">Item name</string>
-    <string name="item_SalePrice">Price</string>
-    <string name="item_Quantity">Qty</string>
     <string name="add_item">Add 2 Sale</string>
     <string name="subTotalLabel">Subtotal: </string>
     <string name="tax">Tax: %s</string>
@@ -89,9 +87,9 @@
     <string name="clear_current_sale">Clear current sale</string>
     <string name="end_current_sale">End current sale</string>
     <string name="sales">Sales</string>
-    <string name="playStoreLink" translatable="false">https://play.google.com/store/apps/dev?id=7952290850776080706</string>
+    <string name="playStoreLink" translatable="false">https://toremetal.com/android/</string>
     <string name="mailTo" translatable="false">mailto:</string>
-    <string name="website" translatable="false">https://www.toremetal.com</string>
+    <string name="website" translatable="false">https://toremetal.com</string>
     <string name="salesTxt" translatable="false">Sales.log</string>
     <string name="salesCsv">Sales.csv</string>
     <string name="salesCsvHeader1">Date,ID/UPC,Name,Description,Quantity,price,SubTotal,Tax,@TaxRate,Total Sale,Sale Cost,Sale Profit,Cost Total,Profit Total,Items Sold,Net Total,Tax Total,Gross Total</string>
@@ -108,7 +106,6 @@
     <string name="am">@string/material_timepicker_am</string>
     <string name="pm">@string/material_timepicker_pm</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Settings</string>
     <!-- Messages Preferences -->
     <string name="signature_title">Business Name</string>
     <string name="share">Send Sms</string>

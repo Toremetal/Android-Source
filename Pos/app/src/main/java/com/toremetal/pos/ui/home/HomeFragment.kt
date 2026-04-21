@@ -41,11 +41,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.toremetal.pos.*
-import com.toremetal.pos.data.*
+import com.toremetal.pos.R
+import com.toremetal.pos.data.dateViewStr
+import com.toremetal.pos.data.emailSend
+import com.toremetal.pos.data.saleCost
+import com.toremetal.pos.data.saleItem
+import com.toremetal.pos.data.saleItemLog
+import com.toremetal.pos.data.salePrice
+import com.toremetal.pos.data.smsSend
+import com.toremetal.pos.data.taxRate
 import com.toremetal.pos.databinding.FragmentHomeBinding
 import java.text.NumberFormat
-import java.util.*
 
 /**
  * This is the [HomeFragment] of the containing
@@ -71,11 +77,13 @@ class HomeFragment : Fragment() {
         setValues()
         binding.addItems.requestFocus()
         binding.addItems.findFocus()
+        binding.ManualEntry.isVisible = binding.switch1.isChecked
         super.onResume()
     }
 
     private fun setValues() {
         binding.currentSaleItems.text = saleItem.toString().replace("[", "").replace("]", "")
+        binding.floatingActionButtonEndSale.isEnabled = binding.currentSaleItems.text != ""
         binding.textViewSubTotal.text =
             NumberFormat.getCurrencyInstance().format(salePrice).toString()
         if (taxRate != 0.0) {
@@ -170,11 +178,12 @@ class HomeFragment : Fragment() {
             binding.textViewTax.text = NumberFormat.getCurrencyInstance().format(0).toString()
             binding.textViewSubTotal.text = NumberFormat.getCurrencyInstance().format(0).toString()
             binding.textViewTotal.text = NumberFormat.getCurrencyInstance().format(0).toString()
+            binding.floatingActionButtonEndSale.isEnabled = binding.currentSaleItems.text != ""
             /* try {
-                view?.rootView?.findViewById<FloatingActionButton>(R.id.clearSale)?.performClick()
-            } catch (e: Exception) {
-                view?.rootView?.findViewById<FloatingActionButton>(R.id.clearSale)?.performClick()
-            }*/
+                    view?.rootView?.findViewById<FloatingActionButton>(R.id.clearSale)?.performClick()
+                } catch (e: Exception) {
+                    view?.rootView?.findViewById<FloatingActionButton>(R.id.clearSale)?.performClick()
+                }*/
         }
         binding.floatingActionButtonEndSale.setOnClickListener {
             try {
@@ -182,6 +191,32 @@ class HomeFragment : Fragment() {
             } catch (e: Exception) {
                 view?.rootView?.findViewById<FloatingActionButton>(R.id.fab2)?.performClick()
             }
+        }
+        binding.newPrice.setOnKeyListener { _, keyCode, event ->
+            if (binding.newPrice.text.toString() != "") {
+                if ((event.action == KeyEvent.ACTION_DOWN) &&
+                    (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    binding.addManEntry.performClick()
+                    return@setOnKeyListener true
+                }
+            }
+            return@setOnKeyListener false
+        }
+        binding.newId.setOnKeyListener { _, keyCode, event ->
+            if ((event.action == KeyEvent.ACTION_DOWN) &&
+                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                binding.newQty.requestFocus()
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
+        }
+        binding.newQty.setOnKeyListener { _, keyCode, event ->
+            if ((event.action == KeyEvent.ACTION_DOWN) &&
+                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                binding.newPrice.requestFocus()
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
         }
         return binding.root
     }

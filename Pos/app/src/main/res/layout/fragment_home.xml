@@ -357,6 +357,7 @@
                     android:focusable="auto"
                     android:fontFamily="casual"
                     android:gravity="center"
+                    android:imeOptions="flagNavigateNext"
                     android:inputType="text"
                     android:singleLine="true"
                     android:textSize="24sp" />
@@ -375,7 +376,7 @@
                     android:layout_marginEnd="@dimen/margin"
                     android:dividerPadding="8dp"
                     android:fontFamily="casual"
-                    android:hint="@string/item_Quantity"
+                    android:hint="@string/qty"
                     tools:layout_editor_absoluteX="203dp"
                     tools:layout_editor_absoluteY="147dp">
 
@@ -386,6 +387,7 @@
                         android:focusable="auto"
                         android:fontFamily="casual"
                         android:gravity="center"
+                        android:imeOptions="flagNavigateNext"
                         android:inputType="numberSigned"
                         android:singleLine="true"
                         android:text="@string/_1"

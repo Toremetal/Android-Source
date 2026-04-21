@@ -48,17 +48,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
+<!--
+        app:layout_constraintBottom_toBottomOf="parent"
 
-    <com.google.android.gms.ads.AdView
+-->
+    <ImageView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:contentDescription="@string/ads"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-<!-- ID for testing banner adUnit: ca-app-pub-3940256099942544/6300978111 -->
+</androidx.constraintlayout.widget.ConstraintLayout><!--
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-8927593002808864/7430275914"
+        ads:adUnitId="ca-app-pub-8927593002808864/7430275914"
+        ID for testing banner adUnit: ca-app-pub-3940256099942544/6300978111
+        -->

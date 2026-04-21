@@ -60,6 +60,7 @@
         android:layout_gravity="bottom|start"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
         android:visibility="invisible"
         app:backgroundTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />
@@ -82,6 +83,7 @@
         android:layout_gravity="bottom|start"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
         android:visibility="invisible"
         app:backgroundTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />
@@ -93,6 +95,7 @@
         android:layout_gravity="bottom|start"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
         android:visibility="invisible"
         app:backgroundTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />
@@ -104,6 +107,7 @@
         android:layout_gravity="bottom|start"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="clearSale"
         android:visibility="invisible"
         app:backgroundTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />
@@ -115,6 +119,7 @@
         android:layout_gravity="bottom|start"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="resetSale"
         android:visibility="invisible"
         app:backgroundTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />
@@ -126,6 +131,7 @@
         android:layout_gravity="bottom|start"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
         android:visibility="invisible"
         app:backgroundTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />

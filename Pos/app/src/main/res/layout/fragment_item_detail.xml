@@ -87,7 +87,7 @@
         android:id="@+id/item_priceL"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/item_SalePrice"
+        android:hint="@string/price"
         app:layout_constraintEnd_toEndOf="@+id/item_nameL"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/item_nameL"

@@ -31,7 +31,11 @@
 
 package com.toremetal.pos.ui.inventory
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.toremetal.pos.data.Item
 import com.toremetal.pos.data.ItemDao
 import kotlinx.coroutines.launch
@@ -140,10 +144,7 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         itemCount: String,
         itemCost: String
     ): Boolean {
-        if (itemName.isBlank() || itemDes.isBlank() || itemPrice.isBlank() || itemCount.isBlank() || itemCost.isBlank()) {
-            return false
-        }
-        return true
+        return !(itemName.isBlank() || itemDes.isBlank() || itemPrice.isBlank() || itemCount.isBlank() || itemCost.isBlank())
     }
 
     /**

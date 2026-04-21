@@ -31,7 +31,7 @@
 
 package com.toremetal.pos.data
 
-import java.util.*
+import java.util.Calendar
 
 /** Update checkmark
  * to prevent the update manager from checking for updates everytime the main form loads.
@@ -41,7 +41,7 @@ var checkUpdate: Boolean = true
 /**
  *
  */
-var npAds: Boolean = false
+//var npAds: Boolean = false
 
 /**
  *

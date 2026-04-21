@@ -73,6 +73,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
                 tools:text="Version:1.0.0.0" />
+            <TextView
+                android:id="@+id/app_copyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                tools:text="copyright" />
         </LinearLayout>
 
     </com.google.android.material.navigation.NavigationView>

@@ -31,6 +31,9 @@
 
 package com.toremetal.pos
 
+//import com.google.ads.mediation.admob.AdMobAdapter
+//import com.google.android.gms.ads.*
+//import com.google.android.ump.*
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
@@ -43,7 +46,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.drawerlayout.widget.DrawerLayout
@@ -55,38 +62,59 @@ import androidx.navigation.ui.setupWithNavController
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.ads.mediation.admob.AdMobAdapter
-import com.google.android.gms.ads.*
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
+import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.InstallState
 import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.google.android.ump.*
-import com.toremetal.pos.data.*
+import com.toremetal.pos.data.checkUpdate
+import com.toremetal.pos.data.dateViewStr
+import com.toremetal.pos.data.emailSend
+import com.toremetal.pos.data.itemInventory
+import com.toremetal.pos.data.itemsHeader
+import com.toremetal.pos.data.myCopyright
+import com.toremetal.pos.data.myMes
+import com.toremetal.pos.data.mySignature
+import com.toremetal.pos.data.saleCost
+import com.toremetal.pos.data.saleItem
+import com.toremetal.pos.data.saleItemLog
+import com.toremetal.pos.data.saleItems
+import com.toremetal.pos.data.salePrice
+import com.toremetal.pos.data.salesFile
+import com.toremetal.pos.data.smsSend
+import com.toremetal.pos.data.taxRate
 import com.toremetal.pos.databinding.ActivityMainBinding
 import com.toremetal.pos.ui.home.HomeFragmentDirections
 import com.toremetal.pos.ui.pdf.PdfRendererViewModel.Companion.FILENAME2
 import com.toremetal.pos.ui.pdf.PdfRendererViewModel.Companion.FILENAME2URI
-import java.io.*
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 import java.text.NumberFormat
-import java.util.*
-
+import java.util.Calendar
 
 /**
  * Application Activity [MainActivity] is the primary container for
  * all fragment activities and processes initiated by the application.
- * [consentForm] provides user consent data exchange interoperability.
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var consentForm: ConsentForm
+    private lateinit var appUpdateManager: AppUpdateManager
+    //private lateinit var consentForm: ConsentForm
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mAdView: AdView
+    //private lateinit var mAdView: AdView
+    private var adLinkStr =
+        "https://play.google.com/store/apps/dev?id=7952290850776080706"
+    private var ad: Int = (0..3).random()
 
     /**
      * Public Function [viewWeb] triggers the device default web browser
@@ -95,31 +123,54 @@ class MainActivity : AppCompatActivity() {
      */
     fun viewWeb(view: View) {
         try {
-            if (view.id == R.id.webTextView) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse(getString(R.string.website))
+            when (view.id) {
+                R.id.webTextView -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(getString(R.string.website))
+                        )
                     )
-                )
-            } else if (view.id == R.id.titleImageView) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse(getString(R.string.playStoreLink))
+                }
+                R.id.titleImageView -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(getString(R.string.playStoreLink))
+                        )
                     )
-                )
+                }
+                R.id.adView -> {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse(adLinkStr)
+                        )
+                    )
+                }
             }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
 
         }
     }
 
     /**
+     * function [getRnd] is an attempt to prevent the random
+     * number generation from repeating the same number consecutively.
+     */
+    private fun getRnd(x: Int): Int {
+        ad = (0..3).random()
+        if (ad == x) {
+            ad = (0..3).random()
+        }
+        return ad
+    }
+    /**
      * The initial entry point for the application.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
@@ -127,10 +178,10 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         /* Pass each menu ID as a set of Ids so each
-           menu is considered as a top level destination. */
+           menu is considered as a top level destination., R.id.nav_inventory, R.id.nav_pdf, R.id.nav_settings */
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_inventory, R.id.nav_pdf, R.id.nav_settings
+                R.id.nav_home
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -237,7 +288,7 @@ class MainActivity : AppCompatActivity() {
                     FILENAME2 = theFile
                     FILENAME2URI =
                         getFileStreamPath(getString(R.string.tmpPdf)).toUri()
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                 }
                 val action =
                     R.id.nav_pdf//HomeFragmentDirections.actionNavHomeToPdfRendererBasicFragment(getString(R.string.sales))
@@ -282,6 +333,10 @@ class MainActivity : AppCompatActivity() {
         salesFile = getString(R.string.salesCsv).replace(".csv", "")
         val vName = packageManager.getPackageInfo(packageName, 0).versionName
         binding.appVersion.text = getString(R.string.version_display_name, vName)
+
+        val copyrightStr =
+            getString(R.string.copyright, Calendar.getInstance().get(Calendar.YEAR).toString())
+        binding.appCopyright.text=copyrightStr
         binding.webText.setOnClickListener {
             binding.webText.isEnabled = false
             try {
@@ -496,6 +551,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(Intent.ACTION_SEND).apply {
                         //type = "application/pdf"
                         //putExtra(Intent.EXTRA_STREAM, uri)
+                        type = "text/plain"
                         putExtra(
                             Intent.EXTRA_SUBJECT,
                             extSub
@@ -514,10 +570,12 @@ class MainActivity : AppCompatActivity() {
                 } catch (e: Exception) {
                     showMessage(e.message.toString())
                 }
-            } else if (findViewById<SwitchMaterial>(R.id.email).isChecked) {
+            }
+            if (findViewById<SwitchMaterial>(R.id.email).isChecked) {
                 val intent = Intent(Intent.ACTION_SENDTO).apply {
+                    //setDataAndType(Uri.parse(getString(R.string.mailTo)), ContactsContract.CommonDataKinds.Email.MIMETYPE)
                     type = ContactsContract.CommonDataKinds.Email.MIMETYPE
-                    data = Uri.parse(getString(R.string.mailTo))
+                    // data = Uri.parse(getString(R.string.mailTo))
                     //   putExtra(android.content.Intent.EXTRA_EMAIL, addresses)
                     putExtra(
                         Intent.EXTRA_SUBJECT,
@@ -548,7 +606,7 @@ class MainActivity : AppCompatActivity() {
                 NumberFormat.getCurrencyInstance().format(0).toString()
             binding.root.rootView.refreshDrawableState()*/
             findViewById<MaterialTextView>(R.id.floatingActionButton10).performClick()
-            showMessage("Sale Logged!")
+            //showMessage("Sale Logged!")
         }
         binding.appBarMain.clearSale.setOnClickListener {
             saleCost = 0.0
@@ -567,16 +625,16 @@ class MainActivity : AppCompatActivity() {
         binding.appBarMain.resetSale.setOnClickListener {
             saleReset()
         }
+
         if (checkUpdate) {
             checkUpdate = false
             // Instantiate the RequestQueue.
             val queue = Volley.newRequestQueue(this)
-            val url = "https://toremetal.github.io/Pos/update.txt"
+            val url = "https://toremetal.com/android/pos/update.txt"
             // Request a string response from the provided URL.
             val stringRequest = StringRequest(
                 Request.Method.GET, url,
                 { response ->
-                    // Display the first 500 characters of the response string.
                     if (response.substring(0, 8) == "flexible") {
                         fUpdate()
                     } else {
@@ -596,7 +654,7 @@ class MainActivity : AppCompatActivity() {
                 .setConsentDebugSettings(debugSettings)
                 .setTagForUnderAgeOfConsent(false)
                 .build()*/
-            val params = ConsentRequestParameters.Builder()
+            /*val params = ConsentRequestParameters.Builder()
                 .setTagForUnderAgeOfConsent(false)
                 .build()
             val consentInformation = UserMessagingPlatform.getConsentInformation(this)
@@ -617,16 +675,51 @@ class MainActivity : AppCompatActivity() {
                     // Handle the error.
                     //showMessage(it.message)
                 }
-            )
+            )*/
         }
         //showAd()
+
+
+
+        val mAdView2 = findViewById<ImageView>(R.id.adView)
+        mAdView2.setOnClickListener { viewWeb(it) }
+        when (getRnd(ad)) {
+            0 -> {
+                adLinkStr = "https://toremetal.com/android/signs/"
+                mAdView2.background = AppCompatResources.getDrawable(
+                    this@MainActivity,
+                    R.drawable.ad_signs_gp
+                )
+            }
+            1 -> {
+                adLinkStr = "https://toremetal.com/android/purchasetracker"
+                mAdView2.background = AppCompatResources.getDrawable(
+                    this@MainActivity,
+                    R.drawable.ad_purchasetracker
+                )
+            }
+            2 -> {
+                adLinkStr = "https://toremetal.com"
+                mAdView2.background = AppCompatResources.getDrawable(
+                    this@MainActivity,
+                    R.drawable.ad_tm
+                )
+            }
+            3 -> {
+                adLinkStr = "https://toremetal.com/android/"
+                mAdView2.background = AppCompatResources.getDrawable(
+                    this@MainActivity,
+                    R.drawable.ad_dev_pg
+                )
+            }
+        }
     }
 
-    /** Function [loadForm] : ConsentForm
+    /** Function [ loadForm] : ConsentForm
      *
      *  Load or show User Data Consent form.
      *  Provides user consent services for use with the application. */
-    private fun loadForm() {
+    /*private fun loadForm() {
         UserMessagingPlatform.loadConsentForm(
             this,
             { consentForm ->
@@ -643,19 +736,61 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-    }
+    }*/
 
     /**
      * Requests the update availability for the current app,
      * and an intent to start an IMMEDIATE update flow.*/
     private fun iUpdate() {
-        val appUpdateManager = AppUpdateManagerFactory.create(this)
+        /** Requests the update availability for the current app, an intent to start
+         * an update flow, and, if applicable, the state of updates currently in progress.*/
+        this.appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+        // Action when the platform has an update. //AppUpdateType.FLEXIBLE AppUpdateType.IMMEDIATE
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
                     AppUpdateType.IMMEDIATE
                 )
             ) {
+                val listener = { state: InstallState ->
+                    state.installStatus()
+                    if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                        //if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                        // After the update is downloaded, show a notification
+                        // and request user confirmation to restart the app.
+                        // Display the snackbar notification and call to action.
+                        Snackbar.make(
+                            binding.root,
+                            "Update Complete",
+                            Snackbar.LENGTH_INDEFINITE
+                        ).apply {
+                            setAction("Please Restart the App") { appUpdateManager.completeUpdate() }
+                            setBackgroundTint(
+                                ContextCompat.getColor(
+                                    this.context,
+                                    R.color.cardview_shadow_start_color
+                                )
+                            )
+                            setActionTextColor(
+                                ContextCompat.getColor(
+                                    this.context,
+                                    R.color.red_700
+                                )
+                            )
+                            setTextColor(
+                                ContextCompat.getColor(
+                                    this.context,
+                                    R.color.secNight
+                                )
+                            )
+                            animationMode = ANIMATION_MODE_SLIDE
+                            show()
+                        }
+                    }
+                }
+                appUpdateManager.registerListener(listener)
+                // .setAllowAssetPackDeletion(true).build()
+                // AppUpdateType.IMMEDIATE AppUpdateType.FLEXIBLE
                 appUpdateManager.startUpdateFlow(
                     appUpdateInfo, this, AppUpdateOptions.newBuilder(
                         AppUpdateType.IMMEDIATE
@@ -670,32 +805,61 @@ class MainActivity : AppCompatActivity() {
      * Requests the update availability for the current app,
      * and an intent to start a FLEXIBLE update flow.*/
     private fun fUpdate() {
-        val appUpdateManager = AppUpdateManagerFactory.create(this)
+        /** Requests the update availability for the current app, an intent to start
+         * an update flow, and, if applicable, the state of updates currently in progress.*/
+        this.appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+        // Action when the platform has an update. //AppUpdateType.FLEXIBLE AppUpdateType.IMMEDIATE
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
                     AppUpdateType.FLEXIBLE
                 )
             ) {
+                val listener = { state: InstallState ->
+                    state.installStatus()
+                    if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                        //if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                        // After the update is downloaded, show a notification
+                        // and request user confirmation to restart the app.
+                        // Display the snackbar notification and call to action.
+                        Snackbar.make(
+                            binding.root,
+                            "Update Complete",
+                            Snackbar.LENGTH_INDEFINITE
+                        ).apply {
+                            setAction("Please Restart the App") { appUpdateManager.completeUpdate() }
+                            setBackgroundTint(
+                                ContextCompat.getColor(
+                                    this.context,
+                                    R.color.cardview_shadow_start_color
+                                )
+                            )
+                            setActionTextColor(
+                                ContextCompat.getColor(
+                                    this.context,
+                                    R.color.red_700
+                                )
+                            )
+                            setTextColor(
+                                ContextCompat.getColor(
+                                    this.context,
+                                    R.color.secNight
+                                )
+                            )
+                            animationMode = ANIMATION_MODE_SLIDE
+                            show()
+                        }
+                    }
+                }
+                appUpdateManager.registerListener(listener)
+                // .setAllowAssetPackDeletion(true).build()
+                // AppUpdateType.IMMEDIATE AppUpdateType.FLEXIBLE
                 appUpdateManager.startUpdateFlow(
                     appUpdateInfo, this, AppUpdateOptions.newBuilder(
                         AppUpdateType.FLEXIBLE
                     )
-                        .setAllowAssetPackDeletion(true)
                         .build()
                 )
-                appUpdateManager.appUpdateInfo.addOnCompleteListener {
-                    Snackbar.make(
-                        binding.root.rootView,
-                        "Update downloaded.",
-                        Snackbar.LENGTH_INDEFINITE
-                    ).apply {
-                        setAction("RESTART") {
-                            appUpdateManager.completeUpdate()
-                        }
-                        show()
-                    }
-                }
             }
         }
     }
@@ -703,7 +867,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Function showAd() initializes the ad server iterations.
      */
-    private fun showAd() {
+    /*private fun showAd() {
         // if (applicationInfo.packageName == "com.toremetal.pos") {
         MobileAds.initialize(this) {}
         mAdView = findViewById(R.id.adView)
@@ -716,12 +880,12 @@ class MainActivity : AppCompatActivity() {
         } else {
             AdRequest.Builder().build()
         }
-        /*
-        val testDeviceIds = listOf("937B8A3255686014E0F3F200ECECE2F4")
-        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
-        MobileAds.setRequestConfiguration(configuration)
-        com.facebook.ads.AdSettings.addTestDevice("769d188b-fec2-49fe-9423-07347f5b4a4a")
-        */
+
+        // val testDeviceIds = listOf("937B8A3255686014E0F3F200ECECE2F4")
+        // val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
+        // MobileAds.setRequestConfiguration(configuration)
+        // com.facebook.ads.AdSettings.addTestDevice("769d188b-fec2-49fe-9423-07347f5b4a4a")
+
         mAdView.loadAd(adRequest)
 
         mAdView.adListener = object : AdListener() {
@@ -742,7 +906,7 @@ class MainActivity : AppCompatActivity() {
         //  } else {
         //  mAdView.visibility = View.GONE
         //  }
-    }
+    }*/
 
     /**
      * Create the option dropdown menu containing file creation options.
@@ -817,6 +981,7 @@ class MainActivity : AppCompatActivity() {
      * @param requestCode determines the operation to perform on the document.
      * @param resultCode determines if the user accepted or cancelled the operation.
      */
+    @Deprecated("Deprecated in Java")
     @SuppressLint("MissingSuperCall")
     override fun onActivityResult(
         requestCode: Int, resultCode: Int, resultData: Intent?
@@ -946,7 +1111,7 @@ class MainActivity : AppCompatActivity() {
                     binding.navView.menu.getItem(5).isVisible = true
                     FILENAME2 = getString(R.string.tmpPdf)
                     FILENAME2URI = uri
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                 }
             }
         }
@@ -1076,10 +1241,10 @@ class MainActivity : AppCompatActivity() {
                     findNavController(R.id.nav_host_fragment_content_main).navigate(action)
                     try {
                         binding.drawerLayout.close()
-                    } catch (e: Exception) {
+                    } catch (_: Exception) {
                     }
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
             }
             return true
         } else {

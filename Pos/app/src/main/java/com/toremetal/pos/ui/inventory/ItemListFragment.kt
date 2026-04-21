@@ -44,7 +44,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.toremetal.pos.PosApplication
 import com.toremetal.pos.R
-import com.toremetal.pos.data.*
+import com.toremetal.pos.data.itemEdit
+import com.toremetal.pos.data.saleItems
 import com.toremetal.pos.databinding.ItemListFragmentBinding
 
 /**
@@ -94,7 +95,7 @@ class ItemListFragment : Fragment() {
             }
             saleItems.clear()
             saleItems.addAll(items)
-            if (saleItems.count() == 0) {
+            if (saleItems.isEmpty()) {
                 binding.floatingActionButtonExport.visibility = View.GONE
             } else {
                 binding.floatingActionButtonExport.visibility = View.VISIBLE
