@@ -1,12 +1,12 @@
 /*
- *    ™T©ReMeTaL Pos.
- *    Copyright (C) 2021™T©ReMeTaL.
+ *    ™T©ReMeTaL Pos.main.
+ *    Copyright (C) 2026™T©ReMeTaL.
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *
  *    Some functionality created with modified (code) lessons provided by:
  *    The Android Open Source Project.
- *    Copyright (C) 2021 The Android Open Source Project.
+ *    Copyright (C) 2026 The Android Open Source Project.
  *    Licensed under the Apache License, Version 2.0 (the "License").
  *
  *    You may obtain a copy of the License at
@@ -19,13 +19,13 @@
  *    limitations under the License.
  *
  *   ************************************************************************
- *     PdfRendererFragment.kt : Copyright (c) 2021™T©ReMeTaL.
+ *     PdfRendererFragment.kt : Copyright (c) 2026™T©ReMeTaL.
  *   ************************************************************************
  *      Computer Scientist: David W. Rick
- *      Date: 12/14/21, 10:32 AM
- *      Program Name: Pos
+ *      Date: 4/21/26, 6:57 PM
+ *      Program Name: Pos.main
  *      File: PdfRendererFragment.kt
- *      Last Modified: 11/29/21, 9:18 PM
+ *      Last Modified: 12/14/21, 10:37 AM
  *   ************************************************************************
  */
 

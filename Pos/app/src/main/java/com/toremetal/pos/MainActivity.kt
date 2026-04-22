@@ -1,12 +1,12 @@
 /*
- *    ™T©ReMeTaL Pos.
- *    Copyright (C) 2021™T©ReMeTaL.
+ *    ™T©ReMeTaL Pos.main.
+ *    Copyright (C) 2026™T©ReMeTaL.
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *
  *    Some functionality created with modified (code) lessons provided by:
  *    The Android Open Source Project.
- *    Copyright (C) 2021 The Android Open Source Project.
+ *    Copyright (C) 2026 The Android Open Source Project.
  *    Licensed under the Apache License, Version 2.0 (the "License").
  *
  *    You may obtain a copy of the License at
@@ -19,13 +19,13 @@
  *    limitations under the License.
  *
  *   ************************************************************************
- *     MainActivity.kt : Copyright (c) 2021™T©ReMeTaL.
+ *     MainActivity.kt : Copyright (c) 2026™T©ReMeTaL.
  *   ************************************************************************
  *      Computer Scientist: David W. Rick
- *      Date: 12/15/21, 8:23 AM
- *      Program Name: Pos
+ *      Date: 4/21/26, 6:57 PM
+ *      Program Name: Pos.main
  *      File: MainActivity.kt
- *      Last Modified: 12/15/21, 8:23 AM
+ *      Last Modified: 4/21/26, 4:40 PM
  *   ************************************************************************
  */
 
@@ -63,18 +63,10 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
-import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.appupdate.AppUpdateOptions
-import com.google.android.play.core.install.InstallState
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.InstallStatus
-import com.google.android.play.core.install.model.UpdateAvailability
 import com.toremetal.pos.data.checkUpdate
 import com.toremetal.pos.data.dateViewStr
 import com.toremetal.pos.data.emailSend
@@ -107,7 +99,7 @@ import java.util.Calendar
  * all fragment activities and processes initiated by the application.
  */
 class MainActivity : AppCompatActivity() {
-    private lateinit var appUpdateManager: AppUpdateManager
+    //private lateinit var appUpdateManager: AppUpdateManager
     //private lateinit var consentForm: ConsentForm
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -626,61 +618,38 @@ class MainActivity : AppCompatActivity() {
             saleReset()
         }
 
-        if (checkUpdate) {
-            checkUpdate = false
-            // Instantiate the RequestQueue.
-            val queue = Volley.newRequestQueue(this)
-            val url = "https://toremetal.com/android/pos/update.txt"
-            // Request a string response from the provided URL.
-            val stringRequest = StringRequest(
-                Request.Method.GET, url,
-                { response ->
-                    if (response.substring(0, 8) == "flexible") {
-                        fUpdate()
-                    } else {
-                        iUpdate()
-                    }
-                },
-                {
-                    iUpdate()
-                })
-            // Add the request to the RequestQueue.
-            queue.add(stringRequest)
-            /*val debugSettings = ConsentDebugSettings.Builder(this)
-                .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-                .addTestDeviceHashedId("937B8A3255686014E0F3F200ECECE2F4").build()
+        /*val debugSettings = ConsentDebugSettings.Builder(this)
+            .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
+            .addTestDeviceHashedId("937B8A3255686014E0F3F200ECECE2F4").build()
 
-            val params = ConsentRequestParameters.Builder()
-                .setConsentDebugSettings(debugSettings)
-                .setTagForUnderAgeOfConsent(false)
-                .build()*/
-            /*val params = ConsentRequestParameters.Builder()
-                .setTagForUnderAgeOfConsent(false)
-                .build()
-            val consentInformation = UserMessagingPlatform.getConsentInformation(this)
-            //consentInformation.reset()
-            consentInformation.requestConsentInfoUpdate(
-                this,
-                params,
-                {
-                    // The consent information state was updated, check if a form is available.
-                    if (consentInformation.consentStatus == ConsentInformation.ConsentStatus.REQUIRED) {
-                        npAds = true
-                        if (consentInformation.isConsentFormAvailable) {
-                        //    loadForm()
-                        }
+        val params = ConsentRequestParameters.Builder()
+            .setConsentDebugSettings(debugSettings)
+            .setTagForUnderAgeOfConsent(false)
+            .build()*/
+        /*val params = ConsentRequestParameters.Builder()
+            .setTagForUnderAgeOfConsent(false)
+            .build()
+        val consentInformation = UserMessagingPlatform.getConsentInformation(this)
+        //consentInformation.reset()
+        consentInformation.requestConsentInfoUpdate(
+            this,
+            params,
+            {
+                // The consent information state was updated, check if a form is available.
+                if (consentInformation.consentStatus == ConsentInformation.ConsentStatus.REQUIRED) {
+                    npAds = true
+                    if (consentInformation.isConsentFormAvailable) {
+                    //    loadForm()
                     }
-                },
-                {
-                    // Handle the error.
-                    //showMessage(it.message)
                 }
-            )*/
-        }
+            },
+            {
+                // Handle the error.
+                //showMessage(it.message)
+            }
+        )*/
+
         //showAd()
-
-
-
         val mAdView2 = findViewById<ImageView>(R.id.adView)
         mAdView2.setOnClickListener { viewWeb(it) }
         when (getRnd(ad)) {
@@ -715,6 +684,44 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (checkUpdate) {
+            // Instantiate the RequestQueue.
+            val queue = Volley.newRequestQueue(this)
+            val url = "https://toremetal.com/android/pos/version.txt"
+            // Request a string response from the provided URL.
+            val stringRequest = StringRequest(
+                Request.Method.GET, url,
+                { response ->
+                    try {
+                        if (response.substring((response.lastIndex-3), (response.lastIndex-2))==".") {
+                            if (response.substring((response.lastIndex-2), response.lastIndex).toInt() > BuildConfig.VERSION_CODE) {
+                                showMessage("Update Available:v$response")
+                            }
+                        } else if (response.substring((response.lastIndex-4), (response.lastIndex-3))==".") {
+                            if (response.substring((response.lastIndex-3), response.lastIndex).toInt() > BuildConfig.VERSION_CODE) {
+                                showMessage("Update Available:v$response")
+                            }
+                        }
+                        checkUpdate = false
+                        /*if (response.substring(0, 8) == "flexible") {
+                            fUpdate()
+                        } else {
+                            iUpdate()
+                        }*/
+                    } catch (e:Exception) {
+                        // showMessage(e.message.toString())
+                    }
+                },
+                {
+                    //iUpdate()
+                })
+            // Add the request to the RequestQueue.
+            queue.add(stringRequest).toString()
+        }
+    }
+
     /** Function [ loadForm] : ConsentForm
      *
      *  Load or show User Data Consent form.
@@ -739,11 +746,10 @@ class MainActivity : AppCompatActivity() {
     }*/
 
     /**
-     * Requests the update availability for the current app,
-     * and an intent to start an IMMEDIATE update flow.*/
-    private fun iUpdate() {
-        /** Requests the update availability for the current app, an intent to start
-         * an update flow, and, if applicable, the state of updates currently in progress.*/
+     * Requests the update availability for the current app, an intent to start
+     *  a IMMEDIATE update flow, and, if applicable, the state of updates currently in progress.
+     * # Used for Google Play Store Publishing. */
+    /* private fun iUpdate() {
         this.appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
         // Action when the platform has an update. //AppUpdateType.FLEXIBLE AppUpdateType.IMMEDIATE
@@ -799,14 +805,13 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
-    }
+    } */
 
     /**
-     * Requests the update availability for the current app,
-     * and an intent to start a FLEXIBLE update flow.*/
-    private fun fUpdate() {
-        /** Requests the update availability for the current app, an intent to start
-         * an update flow, and, if applicable, the state of updates currently in progress.*/
+     * Requests the update availability for the current app, an intent to start
+     * a FLEXIBLE update flow, and, if applicable, the state of updates currently in progress.
+     * # Used for Google Play Store Publishing package manager.*/
+    /* private fun fUpdate() {
         this.appUpdateManager = AppUpdateManagerFactory.create(this)
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
         // Action when the platform has an update. //AppUpdateType.FLEXIBLE AppUpdateType.IMMEDIATE
@@ -862,10 +867,11 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
-    }
+    } */
 
     /**
      * Function showAd() initializes the ad server iterations.
+     * # AdMob mobile add.
      */
     /*private fun showAd() {
         // if (applicationInfo.packageName == "com.toremetal.pos") {
