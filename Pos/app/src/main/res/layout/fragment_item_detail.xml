@@ -22,10 +22,10 @@
   ~     fragment_item_detail.xml : Copyright (c) 2026™T©ReMeTaL.
   ~   ************************************************************************
   ~      Computer Scientist: David W. Rick
-  ~      Date: 4/21/26, 6:57 PM
+  ~      Date: 4/22/26, 3:32 AM
   ~      Program Name: Pos.main
   ~      File: fragment_item_detail.xml
-  ~      Last Modified: 8/10/24, 6:13 AM
+  ~      Last Modified: 4/21/26, 6:58 PM
   ~   ************************************************************************
   -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

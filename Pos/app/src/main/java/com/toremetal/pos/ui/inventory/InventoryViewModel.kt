@@ -22,10 +22,10 @@
  *     InventoryViewModel.kt : Copyright (c) 2026™T©ReMeTaL.
  *   ************************************************************************
  *      Computer Scientist: David W. Rick
- *      Date: 4/21/26, 6:57 PM
+ *      Date: 4/22/26, 3:32 AM
  *      Program Name: Pos.main
  *      File: InventoryViewModel.kt
- *      Last Modified: 8/10/24, 6:09 AM
+ *      Last Modified: 4/21/26, 6:58 PM
  *   ************************************************************************
  */
 
